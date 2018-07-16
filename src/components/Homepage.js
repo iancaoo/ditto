@@ -59,7 +59,9 @@ class Homepage extends Component {
 
 	render() {
 	if (this.state.signup) {
-		return <SignUpEmailPage />;
+		return (
+			<SignUpEmailPage />
+			);
 		} 
 	if (this.state.login) {
 		return <LoginPage />;

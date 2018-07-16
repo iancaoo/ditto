@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Button, Spinner } from 'react-native';
+import { View } from 'react-native';
 import firebase from 'firebase';
+import { Button } from 'react-native-elements';
 import Homepage from './components/Homepage';
+import { Header, Spinner } from './components/common';
 
 class App extends Component {
 	state = { loggedIn: false }
@@ -27,10 +29,12 @@ class App extends Component {
 		switch (this.state.loggedIn) {
 			case true:
 				return (
-				<View style={{ flexDirection: 'row' }}>
-				<Button onPress={() => firebase.auth().signOut()}>
-					Log Out
-				</Button>
+				<View>
+				<Header headerText="Test" />
+				<Button
+				title='Log Out' 
+				onPress={() => firebase.auth().signOut()} 
+				/>
 				</View>
 				);
 			case false:
@@ -46,15 +50,20 @@ class App extends Component {
 	render() {
 		console.log(this.state.loggedIn);
 		return (
-			<Homepage />
-			);
+		this.renderContent()
+		);
 	}
 }
 
 const styles = {
 	spinnerStyle: {  
 		flexDirection: 'row'
-	}
+	},
+	containerStyle: {
+		justifyContent: 'center', 
+		alignItems: 'center',
+		flex: 1
+	},
 };
 
 export default App;
